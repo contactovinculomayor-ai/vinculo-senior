@@ -252,6 +252,19 @@
     color:rgba(246,239,227,0.92); max-width:56ch;
   }
 
+  .reviews{margin-top:40px;}
+  .reviews-title{font-family:'Fraunces',serif; font-size:1.25rem; color:var(--cream-soft); margin:0 0 20px;}
+  .rev-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  @media(max-width:760px){.rev-grid{grid-template-columns:1fr;}}
+  .rev-card{margin:0; background:rgba(246,239,227,0.06); border:1px solid rgba(246,239,227,0.16); border-radius:22px; padding:26px 26px 22px; display:flex; flex-direction:column; gap:14px;}
+  .rev-stars{color:#E3B94F; letter-spacing:3px; font-size:1rem;}
+  .rev-card blockquote{margin:0; font-size:.98rem; line-height:1.65; color:rgba(246,239,227,0.92); flex:1;}
+  .rev-card figcaption{display:flex; flex-direction:column; gap:2px; font-size:.9rem; color:var(--cream-soft);}
+  .rev-card figcaption span{color:var(--olive); font-size:.8rem;}
+  .reviews-cta{margin:28px 0 0; text-align:center;}
+  .btn-ghost-light{display:inline-block; padding:13px 26px; border-radius:999px; border:1.5px solid rgba(246,239,227,0.5); color:var(--cream-soft); text-decoration:none; font-weight:600;}
+  .btn-ghost-light:hover{background:rgba(246,239,227,0.1);}
+
   /* ---------- Contacto ---------- */
   .contacto{background:var(--cream-deep);}
   .contacto-card{
