@@ -200,7 +200,9 @@
   .roadmap-head{margin-top:52px; margin-bottom:22px; display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;}
   .roadmap-head h3{font-size:1.15rem; color:var(--forest);}
   .roadmap-head span{font-size:.82rem; color:var(--ink-soft); font-style:italic; font-family:'Fraunces',serif;}
-  .roadmap-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;}
+  .roadmap-grid{display:grid; grid-template-columns:repeat(6, 1fr); gap:16px;}
+  .roadmap-card{grid-column:span 2;}
+  .roadmap-card:nth-child(n+4){grid-column:span 3;}
   .roadmap-card{
     border:1px solid var(--line); border-radius:16px; padding:20px 22px;
     background:var(--cream-soft);
@@ -212,8 +214,8 @@
   .roadmap-card .tag-active{
     color:var(--cream-soft); background:var(--forest); border-color:var(--forest);
   }
-  .roadmap-card h4{font-size:.96rem; color:var(--forest); font-weight:600; margin-bottom:6px;}
-  .roadmap-card p{font-size:.83rem; color:var(--ink-soft); line-height:1.5;}
+  .roadmap-card h4{font-size:1.02rem; color:var(--forest); font-weight:600; margin-bottom:6px;}
+  .roadmap-card p{font-size:.9rem; color:var(--ink-soft); line-height:1.5;}
   .roadmap-note{margin-top:18px; font-size:.85rem; color:var(--ink-soft); font-style:italic; font-family:'Fraunces',serif;}
 
   /* ---------- Como funciona ---------- */
@@ -329,6 +331,8 @@
     .service-main{grid-template-columns:1fr;}
     .service-main-img{min-height:220px; order:-1;}
     .roadmap-grid{grid-template-columns:repeat(2,1fr);}
+    .roadmap-card,.roadmap-card:nth-child(n+4){grid-column:auto;}
+    .roadmap-card:last-child{grid-column:1 / -1;}
     .steps{grid-template-columns:repeat(2,1fr); row-gap:36px;}
     .contacto-card{grid-template-columns:1fr; padding:40px 28px; gap:36px;}
     .footer-grid{grid-template-columns:1fr; gap:30px;}
@@ -339,6 +343,7 @@
     .wrap{padding:0 20px;}
     section{padding:68px 0;}
     .roadmap-grid{grid-template-columns:1fr;}
+    .roadmap-card:last-child{grid-column:auto;}
     .steps{grid-template-columns:1fr;}
     .exp-card{padding:32px 24px;}
     .exp-card-photo{flex-direction:column; text-align:center; gap:20px;}
@@ -355,3 +360,39 @@
     padding:12px 4px; font-weight:600; font-size:.98rem; text-decoration:none; color:var(--ink-soft);
     border-bottom:1px solid var(--line);
   }
+
+  /* ---------- Carrusel de servicios ---------- */
+  .svc-viewport{display:grid;}
+  .svc-slide{grid-area:1/1; opacity:0; visibility:hidden; transition:opacity .5s ease, visibility .5s;}
+  .svc-slide.is-active{opacity:1; visibility:visible;}
+  .service-main-img.ph{display:flex; align-items:center; justify-content:center; background:linear-gradient(160deg,var(--forest) 0%,var(--forest-deep) 100%); color:rgba(246,239,227,.55);}
+  .service-main-img.ph svg{width:46%; max-width:190px; height:auto;}
+  .svc-controls{display:flex; align-items:center; justify-content:center; gap:14px; margin-top:22px;}
+  .svc-tabs{display:flex; flex-wrap:wrap; justify-content:center; gap:8px;}
+  .svc-tab{font:inherit; font-size:.9rem; font-weight:600; color:var(--forest); background:transparent; border:1.5px solid var(--line); border-radius:999px; padding:9px 18px; cursor:pointer; transition:all .2s;}
+  .svc-tab:hover{border-color:var(--forest);}
+  .svc-tab.is-active{background:var(--forest); color:var(--cream-soft); border-color:var(--forest);}
+  .svc-arrow{width:44px; height:44px; border-radius:50%; border:1.5px solid var(--line); background:var(--cream-soft); color:var(--forest); font-size:1.5rem; line-height:1; cursor:pointer; flex-shrink:0;}
+  .svc-arrow:hover{border-color:var(--forest);}
+  @media(max-width:760px){
+    .service-main-text{padding:32px 24px;}
+    .svc-controls{flex-wrap:wrap;}
+    .svc-tabs{order:3; width:100%;}
+    .svc-arrow{order:1;}
+  }
+  @media(prefers-reduced-motion:reduce){.svc-slide{transition:none;}}
+  .svc-slide{display:flex;}
+  .svc-slide .service-main{flex:1;}
+  .svc-slide .service-main-text{display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+
+  .img-ref{position:absolute; left:14px; bottom:14px; background:rgba(15,36,23,.72); color:var(--cream-soft); font-size:.72rem; font-weight:600; letter-spacing:.04em; padding:6px 12px; border-radius:999px;}
+  .svc-list-title{font-size:.8rem !important; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--olive-deep) !important; margin:0 0 12px !important;}
+
+  /* Evita desborde horizontal en celular (sección Contacto) */
+  .contacto-card > div{min-width:0;}
+  .contact-method{min-width:0;}
+  .contact-method > div{min-width:0;}
+  .contact-method b,.contact-method span{overflow-wrap:anywhere;}
+
+  /* La hoja decorativa de la portada no debe provocar scroll horizontal */
+  .hero{overflow-x:clip;}
